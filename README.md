@@ -58,7 +58,7 @@ puppetserver ca sign --certname <CERTNAME_OF_YOUR_SERVER>
 puppetserver ca list -a
 ```
 
-## adding .gitkeep
+## adding .gitkeep in the directory module
 ```shell
 cd redis/
 find . -type d -empty -not -path "./.git/*" -exec touch {}/.gitkeep \;
