@@ -42,3 +42,26 @@ history
 dnf -y install  https://yum.puppet.com/puppet-tools-release-el-9.noarch.rpm
 dnf -y install pdk
 ``
+
+## Troubleshooting
+```shell
+# on a client puppet agent
+puppet agent -tv
+# on the server
+puppetserver ca list -a
+# if an error occurs, on the server
+puppetserver ca clean --certname <CERTNAME_OF_YOUR_SERVER>
+# on the puppet agent host 
+find / -name ssl -print 2>/dev/null
+rm -rf /etc/puppetlabs/puppet/ssl
+puppet agent -tv
+#  on the server
+puppetserver ca sign --certname <CERTNAME_OF_YOUR_SERVER>
+puppetserver ca list -a
+```
+
+## adding .gitkeep
+```shell
+cd redis/
+find . -type d -empty -not -path "./.git/*" -exec touch {}/.gitkeep \;
+```
